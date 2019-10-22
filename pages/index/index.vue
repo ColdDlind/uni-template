@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
+		<dl-image class="logo" url="/static/logo.png"></dl-image>
 		<view class="text-area">
 			<text class="title">{{title}}</text>
 		</view>
@@ -8,6 +8,7 @@
 </template>
 
 <script>
+	import { login } from '../../api/login.js';
 	export default {
 		data() {
 			return {
@@ -15,10 +16,14 @@
 			}
 		},
 		onLoad() {
-
+			this._getList()
 		},
 		methods: {
-
+			_getList(){
+				login({}).then(res=>{
+					console.log(res)
+				})
+			}
 		}
 	}
 </script>
